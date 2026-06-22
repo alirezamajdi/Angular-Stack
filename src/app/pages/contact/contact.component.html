@@ -1,0 +1,44 @@
+<section class="space-y-4">
+  <h1 class="text-3xl font-bold text-gray-900">Contact</h1>
+
+  @if (submitted()) {
+    <p class="rounded-lg bg-green-50 px-4 py-3 text-green-800" role="status">
+      Thanks, {{ name() }}! Your message has been received.
+    </p>
+  } @else {
+    <form class="max-w-md space-y-4" (submit)="handleSubmit($event)">
+      <div>
+        <label for="name" class="mb-1 block text-sm font-medium text-gray-700">Name</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          class="w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          [ngModel]="name()"
+          (ngModelChange)="name.set($event)"
+          required
+        />
+      </div>
+
+      <div>
+        <label for="message" class="mb-1 block text-sm font-medium text-gray-700">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          rows="4"
+          class="w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          [ngModel]="message()"
+          (ngModelChange)="message.set($event)"
+          required
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+      >
+        Send
+      </button>
+    </form>
+  }
+</section>
